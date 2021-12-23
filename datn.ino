@@ -1,10 +1,13 @@
+#include <Arduino.h>
+#include <HID-Project.h>
+
 int analogPin = A0; // potentiometer wiper (middle terminal) connected to analog pin 3
 // outside leads to ground and +5V
 int val = 0;  // variable to store the value read
 
 void setup() {
     Serial.begin(9600);           //  setup serial
-    test_me();
+    Keyboard.begin();
 }
 
 void loop() {
