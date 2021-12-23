@@ -16,4 +16,5 @@ fig, ax = plt.subplots(nrows=len(pdata), ncols=1)
 
 for index, row in enumerate(ax):
     row.plot(pdata[index])
+
 plt.show()
