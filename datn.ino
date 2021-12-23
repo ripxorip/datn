@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <HID-Project.h>
+#include "cluster.h"
 
 int analogPin = A0; // potentiometer wiper (middle terminal) connected to analog pin 3
 // outside leads to ground and +5V
