@@ -8,8 +8,8 @@ with open('test.csv', 'r') as f:
     for l in f.readlines():
         counter += 1
         if (counter > 5) and (l != '\n'):
-            res = re.findall(r'(.*);(.*);(.*);(.*);(.*)', l)
-            for i in range(len(res[0])):
+            res = re.findall(r'(.*);(.*);(.*);(.*);(.*);(.*)', l)
+            for i in range(len(res[0])-1):
                 pdata[i].append(int(res[0][i]))
 
 fig, ax = plt.subplots(nrows=len(pdata), ncols=1)

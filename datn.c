@@ -7,20 +7,19 @@
 #include "pico/stdlib.h"
 #include "adc.h"
 
+uint16_t adc_channels[16];
+
 int main() {
     stdio_init_all();
-#ifndef PICO_DEFAULT_LED_PIN
-#warning blink example requires a board with a regular LED
-#else
-    const uint LED_PIN = PICO_DEFAULT_LED_PIN;
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
+    datn_adc_init();
+
     while (true) {
-        gpio_put(LED_PIN, 1);
-        sleep_ms(250);
-        gpio_put(LED_PIN, 0);
-        sleep_ms(250);
-        printf("Hello World\n");
+        datn_adc_sample(adc_channels, 16);
+        for (uint32_t i = 0; i < 5; i++)
+        {
+            printf("%d;", adc_channels[i]);
+        }
+        printf("\n");
+        sleep_ms(1);
     }
-#endif
 }
