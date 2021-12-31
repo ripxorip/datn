@@ -13,6 +13,8 @@ pico_sdk_init()
 add_executable(datn
     datn.c
     adc.c
+    cluster.c
+    key.c
 )
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(datn pico_stdlib hardware_adc)
