@@ -17,7 +17,7 @@ add_executable(datn
     key.c
 )
 # Add pico_stdlib library which aggregates commonly used features
-target_link_libraries(datn pico_stdlib hardware_adc)
+target_link_libraries(datn pico_stdlib hardware_adc hardware_i2c)
 
 # enable usb output, disable uart output
 pico_enable_stdio_usb(datn 1)
