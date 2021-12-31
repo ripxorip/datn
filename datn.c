@@ -37,7 +37,6 @@ int main() {
     while (true) {
         datn_adc_sample(adc_channels, 16);
         uint32_t key = cluster_process(&test_cluster, adc_channels);
-
         /*
         for (uint32_t i = 0; i < 5; i++)
         {
