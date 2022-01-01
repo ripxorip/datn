@@ -35,7 +35,7 @@ int main() {
 
     while (true) {
         datn_adc_sample(adc_channels, 16);
-        uint32_t key = cluster_process(&test_cluster, adc_channels);
+        int key = cluster_process(&test_cluster, adc_channels);
         /*
         for (uint32_t i = 0; i < 5; i++)
         {
@@ -43,9 +43,12 @@ int main() {
         }
         printf("\n");
         */
-        if (counter > 100) {
+        uint8_t dummy[7] = {0, 0, 0, 0, 0, 0, 0};
+        if (key >= 0) {
+            dummy[key+1] = 1;
+        }
+        if (counter > 10) {
             /* The first zero is used as the register offset */
-            uint8_t dummy[7] = {0, 1,2,3,4,5,6};
             com_send(dummy, 7);
         }
         counter += 1;
