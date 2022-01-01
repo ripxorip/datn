@@ -1,6 +1,7 @@
 #include "pico/stdlib.h"
 #include "cluster.h"
 #include "adc.h"
+#include "com.h"
 
 uint32_t adc_channels[16];
 
@@ -26,7 +27,11 @@ int main() {
     test_cluster_cfg.west_max_level = 3183;
     test_cluster_cfg.west_min_level = 2367;
 
+    com_init();
+
     cluster_init(&test_cluster, &test_cluster_cfg);
+
+    static uint32_t counter = 0;
 
     while (true) {
         datn_adc_sample(adc_channels, 16);
@@ -38,6 +43,11 @@ int main() {
         }
         printf("\n");
         */
+        if (counter > 100) {
+            uint8_t dummy[7] = {0, 1,2,3,4,5,6};
+            com_send(dummy, 7);
+        }
+        counter += 1;
         sleep_ms(1);
     }
 }

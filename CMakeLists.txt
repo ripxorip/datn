@@ -15,6 +15,7 @@ add_executable(datn
     adc.c
     cluster.c
     key.c
+    com.c
 )
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(datn pico_stdlib hardware_adc hardware_i2c)
