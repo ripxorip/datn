@@ -44,6 +44,7 @@ int main() {
         printf("\n");
         */
         if (counter > 100) {
+            /* The first zero is used as the register offset */
             uint8_t dummy[7] = {0, 1,2,3,4,5,6};
             com_send(dummy, 7);
         }
